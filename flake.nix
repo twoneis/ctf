@@ -7,19 +7,23 @@
   outputs = { self, nixpkgs, ... }@inputs: inputs.utils.lib.eachSystem [
     "x86_64-linux" "i686-linux" "aarch64-linux" "x86_64-darwin"
   ] (system: let
-    pkgs = import nixpkgs {
-      inherit system;
-    };
-    in {
-      devShells.default = pkgs.mkShell {
+      pkgs = import nixpkgs {
+        inherit system;
+      };
+      fhs = pkgs.buildFHSUserEnv {
         name = "pwn";
-
-        packages = with pkgs; [
-          cutter
-          ghidra
+        
+        targetPkgs = pkgs: with pkgs; [
+          (cutter.withPlugins (pkgs: with pkgs; [cutterPlugins.rz-ghidra]))
           pwndbg
           pwntools
         ];
+
+        runScript = ''
+          cutter </dev/null &>/dev/null & bash
+        '';
       };
+    in {
+      devShells.default = fhs.env;
     });
 }
