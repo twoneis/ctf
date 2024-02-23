@@ -16,7 +16,9 @@
         targetPkgs = pkgs: with pkgs; [
           (cutter.withPlugins (pkgs: with pkgs; [cutterPlugins.rz-ghidra]))
           pwndbg
+          python3
           pwntools
+          ltrace
         ];
 
         runScript = ''
