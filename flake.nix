@@ -22,7 +22,7 @@
         ];
 
         runScript = ''
-          cutter </dev/null &>/dev/null & zsh
+          zsh
         '';
       };
     in {
