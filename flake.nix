@@ -26,6 +26,7 @@
           ltrace
 
           clang-tools
+          libllvm
         ];
 
         runScript = ''
