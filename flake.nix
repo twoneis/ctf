@@ -11,6 +11,8 @@
         inherit system;
       };
       fhs = pkgs.buildFHSUserEnv {
+        name = "ctf";
+
         targetPkgs = pkgs: with pkgs; [
           (cutter.withPlugins (pkgs: with pkgs; [cutterPlugins.rz-ghidra]))
           pwndbg
