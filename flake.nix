@@ -18,9 +18,10 @@
 
           pwndbg
 
-          python3
-          python3Packages.python-lsp-server
-          pwntools
+          (python3.withPackages (python-pkgs: with python311Packages; [
+            python-lsp-server
+            pwntools
+          ]))
 
           ltrace
         ];
