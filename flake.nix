@@ -27,6 +27,7 @@
 
           clang-tools
           libllvm
+          clang
         ];
 
         runScript = ''
