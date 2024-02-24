@@ -24,6 +24,8 @@
           ]))
 
           ltrace
+
+          clang-tools
         ];
 
         runScript = ''
