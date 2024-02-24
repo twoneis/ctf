@@ -11,8 +11,6 @@
         inherit system;
       };
       fhs = pkgs.buildFHSUserEnv {
-        name = "pwn";
-        
         targetPkgs = pkgs: with pkgs; [
           (cutter.withPlugins (pkgs: with pkgs; [cutterPlugins.rz-ghidra]))
           pwndbg
@@ -22,7 +20,7 @@
         ];
 
         runScript = ''
-          cutter </dev/null &>/dev/null & bash
+          cutter </dev/null &>/dev/null & zsh
         '';
       };
     in {
