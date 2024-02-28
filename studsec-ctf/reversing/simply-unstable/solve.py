@@ -2,14 +2,14 @@
 
 from pwn import *
 
-sysconf_num = 127961
-flag_ciphertex = 4963047724820499585
-target_ciphertext = -443987883
+sysconf_num = 0x1000
+flag_ciphertex = 0x413C8C81
+target_ciphertext = -0x1a76b7ab
 
 input = target_ciphertext ^ flag_ciphertex
 
-print("Calling with " + str(input))
+print("Calling with " + hex(input))
 
-io = process(['./challenge', str(input)])
+io = process(['./challenge', hex(input)])
 
 print(io.recvall())

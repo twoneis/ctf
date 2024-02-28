@@ -1,9 +1,10 @@
 #include <unistd.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <stdint.h>
 
 int
 main(void)
 {
-        printf("%li\n", sysconf(0x01));
-        return 0;
+        printf("%lx\n", sysconf(0x1e));
 }
