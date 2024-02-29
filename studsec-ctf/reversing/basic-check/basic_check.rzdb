@@ -4,7 +4,7 @@ version=13
 
 /core
 blocksize=0x400
-offset=0x129a
+offset=0x122d
 
 /core/analysis
 
@@ -2319,7 +2319,7 @@ dir.magic=/nix/store/4s5v6v7xywxjblp3zf9fl3jq08l8i7fr-cutter-with-plugins-2.3.2/
 dir.plugins=/nix/store/4s5v6v7xywxjblp3zf9fl3jq08l8i7fr-cutter-with-plugins-2.3.2/lib/rizin/plugins
 dir.prefix=/nix/store/4s5v6v7xywxjblp3zf9fl3jq08l8i7fr-cutter-with-plugins-2.3.2
 dir.projects=/home/twoneis/.local/share/rizin/projects
-dir.tmp=/tmp/nix-shell.eMOmGN
+dir.tmp=/tmp/nix-shell.ZGoYGQ
 dir.types=/usr/include
 elf.checks.sections=true
 elf.checks.segments=true
