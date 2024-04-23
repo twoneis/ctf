@@ -25,6 +25,8 @@
             pwntools
           ]))
 
+          netcat-gnu
+
           clang-tools
           libllvm
           clang
