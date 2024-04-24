@@ -29,7 +29,7 @@
           (python3.withPackages (python-pkgs: with python311Packages; [
             python-lsp-server
             pwntools
-            pycrytodome
+            pycryptodome
           ]))
 
           netcat-gnu
