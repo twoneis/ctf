@@ -34,6 +34,7 @@
 
           netcat-gnu
           postman
+          wireshark
 
           clang-tools
           libllvm
