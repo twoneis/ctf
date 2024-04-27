@@ -24,7 +24,6 @@
           (stable-pkgs.cutter.withPlugins (pkgs: with stable-pkgs; [cutterPlugins.rz-ghidra]))
           apktool
           jadx
-          zulu
 
           pwndbg
           ltrace
