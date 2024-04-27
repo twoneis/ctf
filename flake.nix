@@ -23,6 +23,8 @@
         targetPkgs = pkgs: with pkgs; [
           (stable-pkgs.cutter.withPlugins (pkgs: with stable-pkgs; [cutterPlugins.rz-ghidra]))
           apktool
+          jadx
+          zulu
 
           pwndbg
           ltrace
