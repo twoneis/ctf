@@ -1,19 +1,19 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-old.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs-python.url = "github:cachix/nixpkgs-python";
     utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-old, nixpkgs-python, ... }@inputs: inputs.utils.lib.eachSystem [
+  outputs = { self, nixpkgs, nixpkgs-stable, nixpkgs-python, ... }@inputs: inputs.utils.lib.eachSystem [
     "x86_64-linux" "i686-linux" "aarch64-linux" "x86_64-darwin"
   ] (system: let
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
       };
-      opkgs = import nixpkgs-old {
+      stable-pkgs = import nixpkgs-stable {
         inherit system;
         config.allowUnfree = true;
       };
@@ -21,7 +21,8 @@
         name = "ctf";
 
         targetPkgs = pkgs: with pkgs; [
-          (opkgs.cutter.withPlugins (pkgs: with opkgs; [cutterPlugins.rz-ghidra]))
+          (stable-pkgs.cutter.withPlugins (pkgs: with stable-pkgs; [cutterPlugins.rz-ghidra]))
+          apktool
 
           pwndbg
           ltrace
