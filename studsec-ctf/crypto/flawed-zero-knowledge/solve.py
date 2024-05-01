@@ -10,19 +10,25 @@ h = 0xFB5C538D11EB53C2EEFA8503693EBC1D7DD2C00ABB39C5762065117D53D1629B49998D1DEF
 
 # con = remote('challs.studsec.nl', 7300)
 
-for i in range(1,p):
-    if (i * math.log2(h)).is_integer():
-        print(hex(i))
+c = 1
+u = 1
+r = 1
 
-x = math.log2(h)
-c = 1962896
-u = 2
-
+# given from protocol
 a = pow(g, u)
-r = int(x * c + u)
+# r is given but depends on x which we don't know
+# r = x * c + u
 
+# other stuff known
+# h = g ** x
+# c != 0
+
+# if we could get g ** (c * x) to be a multiple of p we could have r = u, however we can only change c (g ** x is given by h), it would be possible to set it through that, but i don't know how to solve pow(h, c, p) == 0 for c
+
+# if we find a multiple of p that is a power of 2, we can get gr == 0 (since g ** r == n * p then)
 
 hc = pow(h, c, p)
+a = p + 2
 gr = pow(g, r, p)
 hca = (hc * a) % p
 
