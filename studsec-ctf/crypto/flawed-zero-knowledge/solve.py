@@ -27,6 +27,8 @@ a = h
 
 # if we find a multiple of p that is a power of 2, we can get gr == 0 (since g ** r == n * p then), hca == 0 when a = p
 
+# or just negative numbers ig :wires:
+
 hc = pow(h, c, p)
 gr = pow(g, r, p)
 hca = (hc * a) % p
