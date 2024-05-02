@@ -8,14 +8,14 @@ p = 0xFFFFFFFFFFFFFFFFC90FDAA22168C234C4C6628B80DC1CD129024E088A67CC74020BBEA63B
 g = 0x2
 h = 0xFB5C538D11EB53C2EEFA8503693EBC1D7DD2C00ABB39C5762065117D53D1629B49998D1DEF1146ED1EDC0FF9628586CD8EAC56378D24081DB517FFE89B465462C6AEE93EEDE2E7D59A3AC6284E2D650EE1B74952D052C6CDF54163A795F8D17D2792A320054C61735F258D301E854F89C6A52C16BF2E783782F57B048BEFB4B97A1DC9CF3FBABEF8B745EBAF5FA450F9218D9B1BC72177B8BA17B13140C8F9523AC6C204116B042B4AB3C631A410270698A019E7F83ED8091C42CD3979C17C6BB3542DFE5B00D259AE848AC89570CD84B948761C767200D01F52E118C7185DCEB358E5F5B4B994F1607250C3FB018968564BD05435369842DD454B5FEFDED155
 
-# con = remote('challs.studsec.nl', 7300)
-
-c = 1
-u = 1
-r = 1
+con = remote('challs.studsec.nl', 7300)
+c = -1
+u = 0
+r = 0
+a = h
 
 # given from protocol
-a = pow(g, u)
+# a = pow(g, u)
 # r is given but depends on x which we don't know
 # r = x * c + u
 
@@ -25,23 +25,16 @@ a = pow(g, u)
 
 # if we could get g ** (c * x) to be a multiple of p we could have r = u, however we can only change c (g ** x is given by h), it would be possible to set it through that, but i don't know how to solve pow(h, c, p) == 0 for c
 
-# if we find a multiple of p that is a power of 2, we can get gr == 0 (since g ** r == n * p then)
+# if we find a multiple of p that is a power of 2, we can get gr == 0 (since g ** r == n * p then), hca == 0 when a = p
 
 hc = pow(h, c, p)
-a = p + 2
 gr = pow(g, r, p)
 hca = (hc * a) % p
 
 ans = f'{hex(a)} {hex(c)} {hex(r)}'
+
+print(con.recvline())
 print(ans)
-print(f'gr = {hex(gr)}')
-print(f'hca = {hex(hca)}')
+con.sendline(ans.encode('utf-8'))
 
-if gr == hca and c != 0:
-    print("\n\nSolved!!!\n\n")
-
-# print(con.recvline())
-# print(ans)
-# con.sendline(ans.encode('utf-8'))
-
-# print(con.recvall())
+print(con.recvall())
