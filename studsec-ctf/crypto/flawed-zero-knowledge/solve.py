@@ -29,10 +29,6 @@ a = h
 
 # or just negative numbers ig :wires:
 
-hc = pow(h, c, p)
-gr = pow(g, r, p)
-hca = (hc * a) % p
-
 ans = f'{hex(a)} {hex(c)} {hex(r)}'
 
 print(con.recvline())
