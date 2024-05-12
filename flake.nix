@@ -15,16 +15,19 @@
       };
       stable-pkgs = import nixpkgs-stable {
         inherit system;
-        config.allowUnfree = true;
       };
       fhs = pkgs.buildFHSUserEnv {
         name = "ctf";
 
         targetPkgs = pkgs: with pkgs; [
-          (stable-pkgs.cutter.withPlugins (pkgs: with stable-pkgs; [cutterPlugins.rz-ghidra]))
+          (stable-pkgs.cutter.withPlugins (pkgs: with stable-pkgs.cutterPlugins; [
+            rz-ghidra
+          ]))
+          ghidra-bin
           apktool
           jadx
 
+          gef
           pwndbg
           ltrace
 
