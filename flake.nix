@@ -50,7 +50,7 @@
         ];
 
         runScript = ''
-          zsh
+          fish
         '';
       };
     in {
