@@ -1,29 +1,28 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs-python.url = "github:cachix/nixpkgs-python";
     utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-stable, nixpkgs-python, ... }@inputs: inputs.utils.lib.eachSystem [
+  outputs = { self, nixpkgs, nixpkgs-python, ... }@inputs: inputs.utils.lib.eachSystem [
     "x86_64-linux" "i686-linux" "aarch64-linux" "x86_64-darwin"
   ] (system: let
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
       };
-      stable-pkgs = import nixpkgs-stable {
-        inherit system;
-      };
+
+      mkXwlWrapper = import ./nix/xwl-wrapper.nix;
+
       fhs = pkgs.buildFHSUserEnv {
         name = "ctf";
 
         targetPkgs = pkgs: with pkgs; [
-          (stable-pkgs.cutter.withPlugins (pkgs: with stable-pkgs.cutterPlugins; [
+          (pkgs.cutter.withPlugins (ps: with ps; [
             rz-ghidra
           ]))
-          ghidra-bin
+          (mkXwlWrapper {pkgs = pkgs; name = "ghidra";})
           apktool
           jadx
 
