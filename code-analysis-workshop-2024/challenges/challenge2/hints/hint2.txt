@@ -1,0 +1,7 @@
+
+Some observations:
+* The flag starts with 'ptm{', which translates to 'guitar bishop burden future'.
+* The output text starts with gu.. b..p b..n f..e
+* Some sequences of three or four bytes appear multiple times in the output text.
+
+The flag is encoded with leet speak.

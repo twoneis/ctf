@@ -1,0 +1,42 @@
+
+Every flag character is mapped to one of the following words:
+
+a normal
+b hunter
+c attack
+d vessel
+e tunnel
+f method
+g cancel
+h format
+i gravel
+j origin
+k rescue
+l rotate
+m burden
+n palace
+o flower
+p guitar
+q ballot
+r ribbon
+s jacket
+t bishop
+u hungry
+v monday
+w velvet
+x pillow
+y insane
+z purple
+0 expert
+1 friend
+2 medium
+3 silent
+4 bitter
+5 pencil
+6 sprint
+7 cousin
+8 gallon
+9 stable
+_ proton
+{ future
+} wealth

@@ -1,0 +1,12 @@
+
+The output text is compressed. During decompression:
+* Every ascii characters is left unchanged
+* Every non-ascii character is changed to two ascii characters.
+
+In the output text, the words can be easily separated because the location of
+the spaces is known. Many words can be recovered from the ascii characters in
+the output text.
+
+Write down the known flag characters. Can you guess the remaining ones?
+
+f2e2b0 is an underscore.
