@@ -19,9 +19,9 @@
         name = "ctf";
 
         targetPkgs = pkgs: with pkgs; [
-          (pkgs.cutter.withPlugins (ps: with ps; [
-            rz-ghidra
-          ]))
+          # (pkgs.cutter.withPlugins (ps: with ps; [
+          #   rz-ghidra
+          # ]))
           (mkXwlWrapper {pkgs = pkgs; name = "ghidra";})
           apktool
           jadx
@@ -34,6 +34,7 @@
             python-lsp-server
             pwntools
             pycryptodome
+            angr
           ]))
 
           netcat-gnu
